@@ -1,0 +1,15 @@
+{
+  "flights": [
+    {
+      "id": 1,
+      "number": "EW8058",
+      "passengers": [
+        {
+          "id": 1,
+          "lastName": "Moraes",
+          "checkIn": false
+        }
+      ]
+    }
+  ]
+}
