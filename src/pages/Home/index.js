@@ -4,6 +4,7 @@ import getPassengerIndex from '../../lib/getPassengerIndex';
 
 function Home({ flightNumber, setFlightNumber, setPassengerIndex, history }) {
   const [ lastName, setLastName ] = useState("");
+  const [ errorMessage, setErrorMessage ] = useState(null);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -17,13 +18,13 @@ function Home({ flightNumber, setFlightNumber, setPassengerIndex, history }) {
           setPassengerIndex(passengerIndex);
           history.push("/passenger-info");
         } else {
-          console.log("Flight or passenger not found")
+          setErrorMessage("Flight or passenger not found");
         }
       } catch {
-        console.log("server error")
+        setErrorMessage("Flight or passenger not found")
       }
     } else {
-      console.log("please add the requested information")
+      setErrorMessage("please add the requested information")
     }
   }
 
@@ -43,6 +44,7 @@ function Home({ flightNumber, setFlightNumber, setPassengerIndex, history }) {
           value={lastName}
           onChange={(event) => setLastName(event.target.value)}
         />
+        {errorMessage && <p>{errorMessage}</p>}
         <button type="submit">Search flight</button>
       </form>
     </div>
