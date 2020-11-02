@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
 
-function Home({ flightNumber, setFlightNumber }) {
+import getPassengerIndex from '../../lib/getPassengerIndex';
+
+function Home({ flightNumber, setFlightNumber, setPassengerIndex, history }) {
   const [ lastName, setLastName ] = useState("");
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(flightNumber, lastName);
+
+    if (flightNumber && lastName) {
+      try {
+        const passengerIndex = await getPassengerIndex(flightNumber, lastName);
+    
+        if (passengerIndex >= 0) {
+          console.log(passengerIndex)
+          setPassengerIndex(passengerIndex);
+          history.push("/passenger-info");
+        } else {
+          console.log("Flight or passenger not found")
+        }
+      } catch {
+        console.log("server error")
+      }
+    } else {
+      console.log("please add the requested information")
+    }
   }
 
   return (
