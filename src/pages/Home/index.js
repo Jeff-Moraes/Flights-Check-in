@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 import getPassengerIndex from '../../lib/getPassengerIndex';
 
-function Home({ flightNumber, setFlightNumber, setPassengerIndex, history }) {
-  const [ lastName, setLastName ] = useState("");
+function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, history }) {
   const [ errorMessage, setErrorMessage ] = useState(null);
 
   const handleFormSubmit = async (e) => {
