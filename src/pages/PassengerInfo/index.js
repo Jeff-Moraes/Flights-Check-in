@@ -9,9 +9,9 @@ import nationalities from '../../lib/nationalities';
 
 import Input from '../../components/Input';
 
-function PassengerInfo({ lastName, setPassengerInfos, history }) {
+function PassengerInfo({ passengerLastName, setPassengerInfos, history }) {
   const [ passengerInfo, setPassengerInfo] = useState({
-    newLastName: lastName,
+    newLastName: passengerLastName,
     "acceptsT&C": false,
   });
   
@@ -42,7 +42,7 @@ function PassengerInfo({ lastName, setPassengerInfos, history }) {
         <Input name="address" label="Address" value={passengerInfo.address} handleInput={handleInputChange}/>
       }
       {["Austrian", "Greek"].includes(passengerInfo.nationality) &&
-        <Input name="passportExpiryDate" label="Passport expiry date" value={passengerInfo.passportExpiryDate} handleInput={handleInputChange}/>
+        <Input name="passportExpiryDate" label="Passport expiry date" type="date" value={passengerInfo.passportExpiryDate} handleInput={handleInputChange}/>
       }
       {["Belgian", "French"].includes(passengerInfo.nationality) &&
         <Input name="birthDate" label="Birth date" type="date" value={passengerInfo.birthDate} handleInput={handleInputChange}/>
@@ -62,10 +62,10 @@ function PassengerInfo({ lastName, setPassengerInfos, history }) {
 
   return (
     <div>
-      <h1>Welcome, {lastName}</h1>
+      <h1>Welcome, {passengerLastName}</h1>
       <form onSubmit={handleSubmitForm} >
         <Input name="firstName" label="First Name" value={passengerInfo.firstName} handleInput={handleInputChange}/>
-        <Input name="newLastName" label="Last Name" value={passengerInfo.newLastName} handleInput={handleInputChange}/>
+        <Input name="lastName" label="Last Name" value={passengerInfo.lastName} handleInput={handleInputChange}/>
         <FormControl variant="outlined">
           <InputLabel htmlFor="outlined-nationality-native-simple">Nationality</InputLabel>
           <Select

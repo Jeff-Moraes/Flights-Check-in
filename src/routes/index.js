@@ -41,7 +41,7 @@ const Routes = () => {
         exact
         render={(props) => {
           if (passengerIndex !== null) {
-              return <PassengerInfo {...props} lastName={lastName} setPassengerInfos={setPassengerInfos} />;
+              return <PassengerInfo {...props} passengerLastName={lastName} setPassengerInfos={setPassengerInfos} />;
             } else {
               return <Redirect to="/" />;
             }
@@ -67,14 +67,7 @@ const Routes = () => {
       <Route
         path="/checkin-confirmed"
         exact
-        render={(props) => {
-          if (passengerInfos) {
-              return <CheckinConfirmed {...props} lastName={lastName} />;
-            } else {
-              return <Redirect to="/" />;
-            }
-          }
-        }
+        render={(props) => <CheckinConfirmed {...props} />}
       />
     </Switch>
   );
