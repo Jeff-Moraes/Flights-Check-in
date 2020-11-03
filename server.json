@@ -1,0 +1,26 @@
+{
+  "flights": [
+    {
+      "id": 1,
+      "number": "EW8058",
+      "passengers": [
+        {
+          "id": 1,
+          "lastName": "Moraes",
+          "checkIn": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "number": "FR170",
+      "passengers": [
+        {
+          "id": 1,
+          "lastName": "Leone",
+          "checkIn": false
+        }
+      ]
+    }
+  ]
+}
