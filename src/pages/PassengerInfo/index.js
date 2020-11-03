@@ -13,7 +13,7 @@ import { PassengerInfoContainer } from './styles';
 
 function PassengerInfo({ passengerLastName, setPassengerInfos, history }) {
   const [ passengerInfo, setPassengerInfo] = useState({
-    newLastName: passengerLastName,
+    lastName: passengerLastName,
     "acceptsT&C": false,
   });
   
@@ -34,7 +34,7 @@ function PassengerInfo({ passengerLastName, setPassengerInfos, history }) {
 
   const ExtraPassengerInfo = (
     <>
-      {["Austrian", "Belgian", "French", "Greek"].includes(passengerInfo.nationality) &&
+      {["Austrian", "Belgian", "French"].includes(passengerInfo.nationality) &&
         <>
           <Input name="country" label="Country" value={passengerInfo.country} handleInput={handleInputChange}/>
           <Input name="city" label="City" value={passengerInfo.city} handleInput={handleInputChange}/>
