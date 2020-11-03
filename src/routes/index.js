@@ -3,11 +3,15 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "../pages/Home";
 import PassengerInfo from "../pages/PassengerInfo";
+import ReviewInfo from "../pages/ReviewInfo";
+import CheckinConfirmed from "../pages/CheckinConfirmed";
 
 const Routes = () => {
   const [ flightNumber, setFlightNumber ] = useState("");
+  const [ flightInfo, setFlightInfo ] = useState(null);
   const [ lastName, setLastName ] = useState("");
   const [ passengerIndex, setPassengerIndex ] = useState(null);
+  const [ passengerInfos, setPassengerInfos ] = useState(null);
 
   return (
     <Switch>
@@ -21,6 +25,7 @@ const Routes = () => {
             lastName={lastName}
             setLastName={setLastName}
             setPassengerIndex={setPassengerIndex}
+            setFlightInfo={setFlightInfo}
           />)}
       />
       <Route
@@ -28,7 +33,31 @@ const Routes = () => {
         exact
         render={(props) => {
           if (passengerIndex !== null) {
-              return <PassengerInfo {...props} lastName={lastName} />;
+              return <PassengerInfo {...props} lastName={lastName} setPassengerInfos={setPassengerInfos} />;
+            } else {
+              return <Redirect to="/" />;
+            }
+          }
+        }
+      />
+      <Route
+        path="/review-info"
+        exact
+        render={(props) => {
+          if (passengerInfos) {
+              return <ReviewInfo {...props} passengerInfos={passengerInfos} flightInfo={flightInfo} passengerIndex={passengerIndex} />;
+            } else {
+              return <Redirect to="/" />;
+            }
+          }
+        }
+      />
+      <Route
+        path="/checkin-confirmed"
+        exact
+        render={(props) => {
+          if (passengerInfos) {
+              return <CheckinConfirmed {...props} lastName={lastName} />;
             } else {
               return <Redirect to="/" />;
             }

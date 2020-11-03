@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-import getPassengerIndex from '../../lib/getPassengerIndex';
+import getFlightInfoAndPassengerIndex from '../../lib/getFlightInfoAndPassengerIndex';
 
-function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, history }) {
+import Input from '../../components/Input';
+
+function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, setFlightInfo, history }) {
   const [ errorMessage, setErrorMessage ] = useState(null);
 
   const handleFormSubmit = async (e) => {
@@ -10,11 +12,12 @@ function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPasseng
 
     if (flightNumber && lastName) {
       try {
-        const passengerIndex = await getPassengerIndex(flightNumber, lastName);
+        const { flightInfo, passengerIndex } = await getFlightInfoAndPassengerIndex(flightNumber, lastName);
     
         if (passengerIndex >= 0) {
           console.log(passengerIndex)
           setPassengerIndex(passengerIndex);
+          setFlightInfo(flightInfo);
           history.push("/passenger-info");
         } else {
           setErrorMessage("Flight or passenger not found");
@@ -31,18 +34,8 @@ function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPasseng
     <div>
       <h1>Welcome to your web check-in</h1>
       <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="flight #"
-          value={flightNumber}
-          onChange={(event) => setFlightNumber(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          value={lastName}
-          onChange={(event) => setLastName(event.target.value)}
-        />
+        <Input label="Flight Number" value={flightNumber} setInputValue={setFlightNumber}/>
+        <Input label="Last Name" value={lastName} setInputValue={setLastName}/>
         {errorMessage && <p>{errorMessage}</p>}
         <button type="submit">Search flight</button>
       </form>
