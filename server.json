@@ -6,7 +6,7 @@
       "passengers": [
         {
           "id": 1,
-          "lastName": "Moraes",
+          "lastName": "Doe",
           "checkIn": false
         }
       ]
@@ -17,7 +17,18 @@
       "passengers": [
         {
           "id": 1,
-          "lastName": "Leone",
+          "lastName": "Doe",
+          "checkIn": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "number": "BER3270",
+      "passengers": [
+        {
+          "id": 1,
+          "lastName": "Doe",
           "checkIn": false
         }
       ]

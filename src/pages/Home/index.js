@@ -11,8 +11,10 @@ function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPasseng
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    console.log("aqui 1")
 
     if (flightNumber && lastName) {
+      console.log("aqui 2")
       try {
         const { flightInfo, passengerIndex } = await getFlightInfoAndPassengerIndex(flightNumber, lastName);
     
