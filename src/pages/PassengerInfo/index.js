@@ -15,9 +15,7 @@ function PassengerInfo({ lastName, setPassengerInfos, history }) {
     "acceptsT&C": false,
   });
   
-  const handleInputChange = (event) => {
-    console.log(event.target)
-    
+  const handleInputChange = (event) => {    
     const { name, value, checked } = event.target;
 
     setPassengerInfo({
@@ -28,8 +26,6 @@ function PassengerInfo({ lastName, setPassengerInfos, history }) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-
-    console.log(passengerInfo)
     setPassengerInfos(passengerInfo)
     history.push("/review-info");
   }
