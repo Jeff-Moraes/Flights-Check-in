@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import getPassengerIndex from '../../lib/getPassengerIndex';
+import getFlightInfoAndPassengerIndex from '../../lib/getFlightInfoAndPassengerIndex';
 
 import Input from '../../components/Input';
 
-function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, history }) {
+function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, setFlightInfo, history }) {
   const [ errorMessage, setErrorMessage ] = useState(null);
 
   const handleFormSubmit = async (e) => {
@@ -12,11 +12,12 @@ function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPasseng
 
     if (flightNumber && lastName) {
       try {
-        const passengerIndex = await getPassengerIndex(flightNumber, lastName);
+        const { flightInfo, passengerIndex } = await getFlightInfoAndPassengerIndex(flightNumber, lastName);
     
         if (passengerIndex >= 0) {
           console.log(passengerIndex)
           setPassengerIndex(passengerIndex);
+          setFlightInfo(flightInfo);
           history.push("/passenger-info");
         } else {
           setErrorMessage("Flight or passenger not found");
