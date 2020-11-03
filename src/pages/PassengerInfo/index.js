@@ -10,45 +10,60 @@ import nationalities from '../../lib/nationalities';
 import Input from '../../components/Input';
 
 function PassengerInfo({ lastName, setPassengerInfos }) {
-  const [ firstName, setFirstName ] = useState("");
-  const [ newLastName, setNewLastName ] = useState("");
-  const [ nationality, setNationality ] = useState("");
-  const [ email, setEmail ] = useState("");
-  const [ phoneNumber, setPhoneNumber ] = useState("");
-  const [ passport, setPassport ] = useState("");
-  const [ acceptsTandC, setAcceptsTandC ] = useState(false);
-  const [ country, setCountry ] = useState("");
-  const [ city, setCity ] = useState("");
-  const [ address, setAddress ] = useState("");
-  const [ passportExpiryDate, setPassportExpiryDate ] = useState("");
-  const [ birthDate, setBirthDate ] = useState("");
-  const [ birthPlace, setBirthPlace ] = useState("");
-  const [ passportDateOfIssue, setPassportDateOfIssue ] = useState("");
-  const [ passportCountryOfIssue, setPassportCountryOfIssue ] = useState("");
-  const [ passportCityOfIssue, setPassportCityOfIssue ] = useState("");
+  const [ passengerInfo, setPassengerInfo] = useState({
+    newLastName: lastName,
+    acceptsTandC: false,
+  });
+  
+  const handleInputChange = (event) => {
+    console.log(event.target)
+    
+    const { name, value, checked } = event.target;
+
+    setPassengerInfo({
+      ...passengerInfo,
+      [name]: name === "acceptsTandC" ? checked : value,
+    });
+  };
+  // const [ firstName, setFirstName ] = useState("");
+  // const [ newLastName, setNewLastName ] = useState("");
+  // const [ nationality, setNationality ] = useState("");
+  // const [ email, setEmail ] = useState("");
+  // const [ phoneNumber, setPhoneNumber ] = useState("");
+  // const [ passport, setPassport ] = useState("");
+  // const [ acceptsTandC, setAcceptsTandC ] = useState(false);
+  // const [ country, setCountry ] = useState("");
+  // const [ city, setCity ] = useState("");
+  // const [ address, setAddress ] = useState("");
+  // const [ passportExpiryDate, setPassportExpiryDate ] = useState("");
+  // const [ birthDate, setBirthDate ] = useState("");
+  // const [ birthPlace, setBirthPlace ] = useState("");
+  // const [ passportDateOfIssue, setPassportDateOfIssue ] = useState("");
+  // const [ passportCountryOfIssue, setPassportCountryOfIssue ] = useState("");
+  // const [ passportCityOfIssue, setPassportCityOfIssue ] = useState("");
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    const passengerInfo = {
-      firstName,
-      newLastName,
-      nationality,
-      email,
-      phoneNumber,
-      passport,
-      acceptsTandC,
+    // const passengerInfo = {
+    //   firstName,
+    //   newLastName,
+    //   nationality,
+    //   email,
+    //   phoneNumber,
+    //   passport,
+    //   acceptsTandC,
 
-      country,
-      city,
-      address,
-      passportExpiryDate,
-      birthDate,
-      birthPlace,
-      passportDateOfIssue,
-      passportCountryOfIssue,
-      passportCityOfIssue
-    };
+    //   country,
+    //   city,
+    //   address,
+    //   passportExpiryDate,
+    //   birthDate,
+    //   birthPlace,
+    //   passportDateOfIssue,
+    //   passportCountryOfIssue,
+    //   passportCityOfIssue
+    // };
 
     console.log(passengerInfo)
 
@@ -57,29 +72,29 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
 
   const ExtraPassengerInfo = (
     <>
-      {["Austrian", "Belgian", "French", "Greek"].includes(nationality) &&
+      {["Austrian", "Belgian", "French", "Greek"].includes(passengerInfo.nationality) &&
         <>
-          <Input label="Country" value={country} setInputValue={setCountry}/>
-          <Input label="City" value={city} setInputValue={setCity}/>
+          <Input name="country" label="Country" value={passengerInfo.country} handleInput={handleInputChange}/>
+          <Input name="city" label="City" value={passengerInfo.city} handleInput={handleInputChange}/>
         </>
       }
-      {["Belgian", "Spanish"].includes(nationality) &&
-        <Input label="Address" value={address} setInputValue={setAddress}/>
+      {["Belgian", "Spanish"].includes(passengerInfo.nationality) &&
+        <Input name="address" label="Address" value={passengerInfo.address} handleInput={handleInputChange}/>
       }
-      {["Austrian", "Greek"].includes(nationality) &&
-        <Input label="Passport expiry date" value={passportExpiryDate} setInputValue={setPassportExpiryDate}/>
+      {["Austrian", "Greek"].includes(passengerInfo.nationality) &&
+        <Input name="passportExpiryDate" label="Passport expiry date" value={passengerInfo.passportExpiryDate} handleInput={handleInputChange}/>
       }
-      {["Belgian", "French"].includes(nationality) &&
-        <Input label="Birth date" type="date" value={birthDate} setInputValue={setBirthDate}/>
+      {["Belgian", "French"].includes(passengerInfo.nationality) &&
+        <Input name="birthDate" label="Birth date" type="date" value={passengerInfo.birthDate} handleInput={handleInputChange}/>
       }
-      {nationality === "French" &&
-        <Input label="Birth place" value={birthPlace} setInputValue={setBirthPlace}/>
+      {passengerInfo.nationality === "French" &&
+        <Input name="birthPlace" label="Birth place" value={passengerInfo.birthPlace} handleInput={handleInputChange}/>
       }
-      {nationality === "Greek" &&
+      {passengerInfo.nationality === "Greek" &&
         <>
-          <Input label="Passport date of issue" type="date" value={passportDateOfIssue} setInputValue={setPassportDateOfIssue}/>
-          <Input label="Passport country of issue" value={passportCountryOfIssue} setInputValue={setPassportCountryOfIssue}/>
-          <Input label="Passport city of issue" value={passportCityOfIssue} setInputValue={setPassportCityOfIssue}/>
+          <Input name="passportDateOfIssue" label="Passport date of issue" type="date" value={passengerInfo.passportDateOfIssue} handleInput={handleInputChange}/>
+          <Input name="passportCountryOfIssue" label="Passport country of issue" value={passengerInfo.passportCountryOfIssue} handleInput={handleInputChange}/>
+          <Input name="passportCityOfIssue" label="Passport city of issue" value={passengerInfo.passportCityOfIssue} handleInput={handleInputChange}/>
         </>
       }
     </>
@@ -89,17 +104,18 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
     <div>
       <h1>Welcome, {lastName}</h1>
       <form onSubmit={handleSubmitForm} >
-        <Input label="First Name" value={firstName} setInputValue={setFirstName}/>
-        <Input label="Last Name" value={newLastName} setInputValue={setNewLastName}/>
+        <Input name="firstName" label="First Name" value={passengerInfo.firstName} handleInput={handleInputChange}/>
+        <Input name="newLastName" label="Last Name" value={passengerInfo.newLastName} handleInput={handleInputChange}/>
         <FormControl variant="outlined">
           <InputLabel htmlFor="outlined-nationality-native-simple">Nationality</InputLabel>
           <Select
             native
-            value={nationality}
-            onChange={(event) => setNationality(event.target.value)}
+            name="nationality"
+            value={passengerInfo.nationality}
+            onChange={(event) => handleInputChange(event)}
             label="Nationality"
             inputProps={{
-              name: 'Nationality',
+              name: 'nationality',
               id: 'outlined-nationality-native-simple',
             }}
           >
@@ -109,15 +125,16 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
             ))}
           </Select>
         </FormControl>
-        <Input label="Email" type="email" value={email} setInputValue={setEmail}/>
-        <Input label="Phone number" value={phoneNumber} setInputValue={setPhoneNumber}/>
-        <Input label="Passport #" value={passport} setInputValue={setPassport}/>
+        <Input name="email" label="Email" type="email" value={passengerInfo.email} handleInput={handleInputChange}/>
+        <Input name="phoneNumber" label="Phone number" value={passengerInfo.phoneNumber} handleInput={handleInputChange}/>
+        <Input name="passport" label="Passport #" value={passengerInfo.passport} handleInput={handleInputChange}/>
         {ExtraPassengerInfo}
         <FormControlLabel
           control={
             <Checkbox
-              checked={acceptsTandC}
-              onChange={(event) => setAcceptsTandC(event.target.checked)}
+              name="acceptsTandC"
+              checked={passengerInfo.acceptsTandC}
+              onChange={(event) => handleInputChange(event)}
               name="acceptsTandC"
               color="primary"
             />
