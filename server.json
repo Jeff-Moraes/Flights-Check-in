@@ -18,7 +18,17 @@
         {
           "id": 1,
           "lastName": "Leone",
-          "checkIn": false
+          "checkIn": true,
+          "acceptsT&C": true,
+          "firstName": "Jeff",
+          "nationality": "Greek",
+          "email": "jeff@mail.com",
+          "phoneNumber": "7552825538",
+          "passport": "F5AS47D",
+          "passportExpiryDate": "2020-11-24",
+          "passportDateOfIssue": "2020-10-01",
+          "passportCountryOfIssue": "Brazil",
+          "passportCityOfIssue": "cwb"
         }
       ]
     }

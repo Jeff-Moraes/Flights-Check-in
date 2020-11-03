@@ -10,7 +10,7 @@ export default function Input({ name, label, value, type = "text", setInputValue
       label={label}
       variant="outlined"
       value={value}
-      InputLabelProps={type === "date" && {shrink: true}}
+      InputLabelProps={{shrink: type === "date" ? true : false}}
       onChange={(event) => handleInput ? handleInput(event) : setInputValue(event.target.value)}
     />
   )
