@@ -10,14 +10,7 @@ export const ReviewInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: lightblue;
-
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #303EA0;
-    margin-bottom: 5vh;
-  }
+  background-color: #dfdfdf;
 
   .passengerInfos {
     display: flex;
@@ -36,7 +29,7 @@ export const ReviewInfoContainer = styled.div`
         position: absolute;
         top: -10px;
         left: 5px;
-        background-color: lightblue;
+        background-color: #dfdfdf;
         padding: 3px;
         font-size: 0.75rem;
         color: #303EA0;

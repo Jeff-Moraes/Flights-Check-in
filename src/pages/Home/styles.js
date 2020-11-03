@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   margin: 0 auto;
   max-width: 780px;
+  min-height: 100vh;
   padding: 10vh 5vw;
 
   place-content: center;
@@ -10,19 +11,9 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: lightblue;
-
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #303EA0;
-    margin-bottom: 5vh;
-  }
+  background-color: #dfdfdf;
 
   form {
-    display: flex;
-    flex-direction: column;
-
     div {
       & + div {
         margin-top: 4vh;

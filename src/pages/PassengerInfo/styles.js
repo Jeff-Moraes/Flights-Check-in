@@ -10,19 +10,9 @@ export const PassengerInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: lightblue;
-
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #303EA0;
-    margin-bottom: 5vh;
-  }
+  background-color: #dfdfdf;
 
   form {
-    display: flex;
-    flex-direction: column;
-
     div {
       & + div {
         margin-top: 4vh;
@@ -30,7 +20,7 @@ export const PassengerInfoContainer = styled.div`
     }
 
     .checkboxContainer {
-      color: #303EA0;
+      color: #111538;
     }
 
     p {

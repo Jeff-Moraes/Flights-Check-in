@@ -12,14 +12,7 @@ export const CheckinContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background-color: lightblue;
-
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #303EA0;
-    margin-bottom: 5vh;
-  }
+  background-color: #dfdfdf;
 
   a {
     margin-top: 4vh;
