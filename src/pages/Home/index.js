@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 
 import getFlightInfoAndPassengerIndex from '../../lib/getFlightInfoAndPassengerIndex';
-
 import Input from '../../components/Input';
+
+import { HomeContainer } from './styles';
 
 function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, setFlightInfo, history }) {
   const [ errorMessage, setErrorMessage ] = useState(null);
@@ -31,15 +33,15 @@ function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPasseng
   }
 
   return (
-    <div>
+    <HomeContainer>
       <h1>Welcome to your web check-in</h1>
       <form onSubmit={handleFormSubmit}>
         <Input label="Flight Number" value={flightNumber} setInputValue={setFlightNumber}/>
         <Input label="Last Name" value={lastName} setInputValue={setLastName}/>
         {errorMessage && <p>{errorMessage}</p>}
-        <button type="submit">Search flight</button>
+        <Button variant="contained" color="primary" type="submit">Search flight</Button>
       </form>
-    </div>
+    </HomeContainer>
   );
 }
 
