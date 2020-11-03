@@ -9,10 +9,10 @@ import nationalities from '../../lib/nationalities';
 
 import Input from '../../components/Input';
 
-function PassengerInfo({ lastName, setPassengerInfos }) {
+function PassengerInfo({ lastName, setPassengerInfos, history }) {
   const [ passengerInfo, setPassengerInfo] = useState({
     newLastName: lastName,
-    acceptsTandC: false,
+    "acceptsT&C": false,
   });
   
   const handleInputChange = (event) => {
@@ -22,7 +22,7 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
 
     setPassengerInfo({
       ...passengerInfo,
-      [name]: name === "acceptsTandC" ? checked : value,
+      [name]: name === "acceptsT&C" ? checked : value,
     });
   };
 
@@ -31,6 +31,7 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
 
     console.log(passengerInfo)
     setPassengerInfos(passengerInfo)
+    history.push("/review-info");
   }
 
   const ExtraPassengerInfo = (
@@ -95,10 +96,9 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
         <FormControlLabel
           control={
             <Checkbox
-              name="acceptsTandC"
-              checked={passengerInfo.acceptsTandC}
+              name="acceptsT&C"
+              checked={passengerInfo["acceptsT&C"]}
               onChange={(event) => handleInputChange(event)}
-              name="acceptsTandC"
               color="primary"
             />
           }

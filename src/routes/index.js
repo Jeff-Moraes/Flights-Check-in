@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "../pages/Home";
 import PassengerInfo from "../pages/PassengerInfo";
+import ReviewInfo from "../pages/ReviewInfo";
 
 const Routes = () => {
   const [ flightNumber, setFlightNumber ] = useState("");
@@ -30,6 +31,18 @@ const Routes = () => {
         render={(props) => {
           if (passengerIndex !== null) {
               return <PassengerInfo {...props} lastName={lastName} setPassengerInfos={setPassengerInfos} />;
+            } else {
+              return <Redirect to="/" />;
+            }
+          }
+        }
+      />
+      <Route
+        path="/review-info"
+        exact
+        render={(props) => {
+          if (passengerInfos) {
+              return <ReviewInfo {...props} passengerInfos={passengerInfos} />;
             } else {
               return <Redirect to="/" />;
             }
