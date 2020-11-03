@@ -13,6 +13,14 @@ const Routes = () => {
   const [ passengerIndex, setPassengerIndex ] = useState(null);
   const [ passengerInfos, setPassengerInfos ] = useState(null);
 
+  const resetInfos = () => {
+    setFlightNumber("");
+    setFlightInfo(null);
+    setLastName("");
+    setPassengerIndex(null);
+    setPassengerInfos(null);
+  }
+
   return (
     <Switch>
       <Route
@@ -45,7 +53,11 @@ const Routes = () => {
         exact
         render={(props) => {
           if (passengerInfos) {
-              return <ReviewInfo {...props} passengerInfos={passengerInfos} flightInfo={flightInfo} passengerIndex={passengerIndex} />;
+              return <ReviewInfo {...props}
+                passengerInfos={passengerInfos}
+                flightInfo={flightInfo}
+                passengerIndex={passengerIndex}
+                resetInfos={resetInfos} />;
             } else {
               return <Redirect to="/" />;
             }

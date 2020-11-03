@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import sendPassengerInfo from '../../lib/sendPassengerInfo';
 
-export default function ReviewInfo({ passengerInfos, flightInfo, passengerIndex, history }) {
+export default function ReviewInfo({ passengerInfos, flightInfo, passengerIndex, resetInfos, history }) {
   const [ errorMessage, setErrorMessage ] = useState(null);
 
   const getInfoName = (info) => {
@@ -28,6 +28,7 @@ export default function ReviewInfo({ passengerInfos, flightInfo, passengerIndex,
     if(error) {
       setErrorMessage("Check-in could not be confirmed, please try again")
     } else {
+      resetInfos();
       history.push("/checkin-confirmed");
     }
   }
