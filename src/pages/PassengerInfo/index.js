@@ -17,6 +17,15 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
   const [ phoneNumber, setPhoneNumber ] = useState("");
   const [ passport, setPassport ] = useState("");
   const [ acceptsTandC, setAcceptsTandC ] = useState(false);
+  const [ country, setCountry ] = useState("");
+  const [ city, setCity ] = useState("");
+  const [ address, setAddress ] = useState("");
+  const [ passportExpiryDate, setPassportExpiryDate ] = useState("");
+  const [ birthDate, setBirthDate ] = useState("");
+  const [ birthPlace, setBirthPlace ] = useState("");
+  const [ passportDateOfIssue, setPassportDateOfIssue ] = useState("");
+  const [ passportCountryOfIssue, setPassportCountryOfIssue ] = useState("");
+  const [ passportCityOfIssue, setPassportCityOfIssue ] = useState("");
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -28,13 +37,53 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
       email,
       phoneNumber,
       passport,
-      acceptsTandC
+      acceptsTandC,
+
+      country,
+      city,
+      address,
+      passportExpiryDate,
+      birthDate,
+      birthPlace,
+      passportDateOfIssue,
+      passportCountryOfIssue,
+      passportCityOfIssue
     };
 
     console.log(passengerInfo)
 
     setPassengerInfos(passengerInfo)
   }
+
+  const ExtraPassengerInfo = (
+    <>
+      {["Austrian", "Belgian", "French", "Greek"].includes(nationality) &&
+        <>
+          <Input label="Country" value={country} setInputValue={setCountry}/>
+          <Input label="City" value={city} setInputValue={setCity}/>
+        </>
+      }
+      {["Belgian", "Spanish"].includes(nationality) &&
+        <Input label="Address" value={address} setInputValue={setAddress}/>
+      }
+      {["Austrian", "Greek"].includes(nationality) &&
+        <Input label="Passport expiry date" value={passportExpiryDate} setInputValue={setPassportExpiryDate}/>
+      }
+      {["Belgian", "French"].includes(nationality) &&
+        <Input label="Birth date" type="date" value={birthDate} setInputValue={setBirthDate}/>
+      }
+      {nationality === "French" &&
+        <Input label="Birth place" value={birthPlace} setInputValue={setBirthPlace}/>
+      }
+      {nationality === "Greek" &&
+        <>
+          <Input label="Passport date of issue" type="date" value={passportDateOfIssue} setInputValue={setPassportDateOfIssue}/>
+          <Input label="Passport country of issue" value={passportCountryOfIssue} setInputValue={setPassportCountryOfIssue}/>
+          <Input label="Passport city of issue" value={passportCityOfIssue} setInputValue={setPassportCityOfIssue}/>
+        </>
+      }
+    </>
+  )
 
   return (
     <div>
@@ -63,6 +112,7 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
         <Input label="Email" type="email" value={email} setInputValue={setEmail}/>
         <Input label="Phone number" value={phoneNumber} setInputValue={setPhoneNumber}/>
         <Input label="Passport #" value={passport} setInputValue={setPassport}/>
+        {ExtraPassengerInfo}
         <FormControlLabel
           control={
             <Checkbox
