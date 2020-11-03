@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 
-export default function ReviewInfo({ passengerInfos, history }) {
+import sendPassengerInfo from '../../lib/sendPassengerInfo';
+
+export default function ReviewInfo({ passengerInfos, flightInfo, passengerIndex, history }) {
+  const [ errorMessage, setErrorMessage ] = useState(null);
+
   const getInfoName = (info) => {
     return <p>{info[0].split("").map(char => char === char.toUpperCase() ? ` ${char}` : char).join("").toUpperCase()}</p>
   };
@@ -16,18 +21,27 @@ export default function ReviewInfo({ passengerInfos, history }) {
     </>
   )
 
-  const handleConfirmInfo = (e) => {
+  const handleConfirmInfo = async (e) => {
     e.preventDefault();
-
-    history.push("/checkin-confirmed");
+    const { error } = await sendPassengerInfo(flightInfo, passengerInfos, passengerIndex);
+    
+    if(error) {
+      setErrorMessage("Check-in could not be confirmed, please try again")
+    } else {
+      history.push("/checkin-confirmed");
+    }
   }
 
   return (
     <div>
       <h1>Please review your information</h1>
-      <div>
-        {PassengerInfoTags}
-      </div>
+      <div>{PassengerInfoTags}</div>
+      { errorMessage && (
+        <>
+          <p>{errorMessage}</p>
+          <Link to="/" >Try again</Link>
+        </>
+      )}
       <button type="button" onClick={handleConfirmInfo}>Continue</button>
     </div>
   )
