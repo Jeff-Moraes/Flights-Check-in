@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import nationalities from '../../lib/nationalities';
+
+import Input from '../../components/Input';
 
 function PassengerInfo({ lastName, setPassengerInfos }) {
   const [ firstName, setFirstName ] = useState("");
@@ -33,48 +40,40 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
     <div>
       <h1>Welcome, {lastName}</h1>
       <form onSubmit={handleSubmitForm} >
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(event) => setFirstName(event.target.value)}
+        <Input label="First Name" value={firstName} setInputValue={setFirstName}/>
+        <Input label="Last Name" value={newLastName} setInputValue={setNewLastName}/>
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="outlined-nationality-native-simple">Nationality</InputLabel>
+          <Select
+            native
+            value={nationality}
+            onChange={(event) => setNationality(event.target.value)}
+            label="Nationality"
+            inputProps={{
+              name: 'Nationality',
+              id: 'outlined-nationality-native-simple',
+            }}
+          >
+            <option aria-label="None" value="" />
+            { nationalities.map(nationality => (
+              <option key={nationality} value={nationality}>{nationality}</option>
+            ))}
+          </Select>
+        </FormControl>
+        <Input label="Email" type="email" value={email} setInputValue={setEmail}/>
+        <Input label="Phone number" value={phoneNumber} setInputValue={setPhoneNumber}/>
+        <Input label="Passport #" value={passport} setInputValue={setPassport}/>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={acceptsTandC}
+              onChange={(event) => setAcceptsTandC(event.target.checked)}
+              name="acceptsTandC"
+              color="primary"
+            />
+          }
+          label="Accepts T&C"
         />
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={newLastName}
-          onChange={(event) => setNewLastName(event.target.value)}
-        />
-        <select value={nationality} onChange={(event) => setNationality(event.target.value)}>
-          { nationalities.map(nationality => (
-            <option key={nationality} value={nationality}>{nationality}</option>
-          ))}
-        </select>
-        <input
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Phone number"
-          value={phoneNumber}
-          onChange={(event) => setPhoneNumber(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Passport #"
-          value={passport}
-          onChange={(event) => setPassport(event.target.value)}
-        />
-        <input
-          id="tc"
-          type="checkbox"
-          value={acceptsTandC}
-          onChange={(event) => setAcceptsTandC(event.target.checked)}
-        />
-        <label htmlFor="tc">Accepts T&C</label>
         <button type="submit">Continue</button>
       </form>
     </div>

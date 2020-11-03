@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import getPassengerIndex from '../../lib/getPassengerIndex';
 
+import Input from '../../components/Input';
+
 function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPassengerIndex, history }) {
   const [ errorMessage, setErrorMessage ] = useState(null);
 
@@ -31,18 +33,8 @@ function Home({ flightNumber, setFlightNumber, lastName, setLastName, setPasseng
     <div>
       <h1>Welcome to your web check-in</h1>
       <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="flight #"
-          value={flightNumber}
-          onChange={(event) => setFlightNumber(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          value={lastName}
-          onChange={(event) => setLastName(event.target.value)}
-        />
+        <Input label="Flight Number" value={flightNumber} setInputValue={setFlightNumber}/>
+        <Input label="Last Name" value={lastName} setInputValue={setLastName}/>
         {errorMessage && <p>{errorMessage}</p>}
         <button type="submit">Search flight</button>
       </form>
