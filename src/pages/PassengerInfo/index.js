@@ -25,48 +25,11 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
       [name]: name === "acceptsTandC" ? checked : value,
     });
   };
-  // const [ firstName, setFirstName ] = useState("");
-  // const [ newLastName, setNewLastName ] = useState("");
-  // const [ nationality, setNationality ] = useState("");
-  // const [ email, setEmail ] = useState("");
-  // const [ phoneNumber, setPhoneNumber ] = useState("");
-  // const [ passport, setPassport ] = useState("");
-  // const [ acceptsTandC, setAcceptsTandC ] = useState(false);
-  // const [ country, setCountry ] = useState("");
-  // const [ city, setCity ] = useState("");
-  // const [ address, setAddress ] = useState("");
-  // const [ passportExpiryDate, setPassportExpiryDate ] = useState("");
-  // const [ birthDate, setBirthDate ] = useState("");
-  // const [ birthPlace, setBirthPlace ] = useState("");
-  // const [ passportDateOfIssue, setPassportDateOfIssue ] = useState("");
-  // const [ passportCountryOfIssue, setPassportCountryOfIssue ] = useState("");
-  // const [ passportCityOfIssue, setPassportCityOfIssue ] = useState("");
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    // const passengerInfo = {
-    //   firstName,
-    //   newLastName,
-    //   nationality,
-    //   email,
-    //   phoneNumber,
-    //   passport,
-    //   acceptsTandC,
-
-    //   country,
-    //   city,
-    //   address,
-    //   passportExpiryDate,
-    //   birthDate,
-    //   birthPlace,
-    //   passportDateOfIssue,
-    //   passportCountryOfIssue,
-    //   passportCityOfIssue
-    // };
-
     console.log(passengerInfo)
-
     setPassengerInfos(passengerInfo)
   }
 
