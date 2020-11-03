@@ -38,7 +38,7 @@ This project was developed with the following technologies:
 To try it at the deployed version [here](https://flights-check-in.vercel.app/) you need to run the fake server on your terminal.
 You can do the check-in with the example flight and passenger info:
 
-flight number = BER3270
+flight number = BER3270 </br>
 passenger last name = Doe
 
 ```bash
@@ -61,7 +61,7 @@ $ yarn install
 # Run the app
 $ yarn start
 
-# in another terminar run the json-server - fake API
+# in another terminal run the json-server - fake API
 $ npx json-server server.json -p 3333 -w
 ```
 
