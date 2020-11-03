@@ -4,16 +4,35 @@ import nationalities from '../../lib/nationalities';
 
 function PassengerInfo({ lastName, setPassengerInfos }) {
   const [ firstName, setFirstName ] = useState("");
+  const [ newLastName, setNewLastName ] = useState("");
   const [ nationality, setNationality ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ phoneNumber, setPhoneNumber ] = useState("");
   const [ passport, setPassport ] = useState("");
   const [ acceptsTandC, setAcceptsTandC ] = useState(false);
 
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+
+    const passengerInfo = {
+      firstName,
+      newLastName,
+      nationality,
+      email,
+      phoneNumber,
+      passport,
+      acceptsTandC
+    };
+
+    console.log(passengerInfo)
+
+    setPassengerInfos(passengerInfo)
+  }
+
   return (
     <div>
       <h1>Welcome, {lastName}</h1>
-      <form>
+      <form onSubmit={handleSubmitForm} >
         <input
           type="text"
           placeholder="First Name"
@@ -23,7 +42,8 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
         <input
           type="text"
           placeholder="Last Name"
-          defaultValue={lastName}
+          value={newLastName}
+          onChange={(event) => setNewLastName(event.target.value)}
         />
         <select value={nationality} onChange={(event) => setNationality(event.target.value)}>
           { nationalities.map(nationality => (
@@ -52,7 +72,7 @@ function PassengerInfo({ lastName, setPassengerInfos }) {
           id="tc"
           type="checkbox"
           value={acceptsTandC}
-          onChange={(event) => setAcceptsTandC(event.target.value)}
+          onChange={(event) => setAcceptsTandC(event.target.checked)}
         />
         <label htmlFor="tc">Accepts T&C</label>
         <button type="submit">Continue</button>
