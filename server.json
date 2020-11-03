@@ -6,7 +6,7 @@
       "passengers": [
         {
           "id": 1,
-          "lastName": "Moraes",
+          "lastName": "Doe",
           "checkIn": false
         }
       ]
@@ -17,18 +17,19 @@
       "passengers": [
         {
           "id": 1,
-          "lastName": "Leone",
-          "checkIn": true,
-          "acceptsT&C": true,
-          "firstName": "Jeff",
-          "nationality": "Greek",
-          "email": "jeff@mail.com",
-          "phoneNumber": "7552825538",
-          "passport": "F5AS47D",
-          "passportExpiryDate": "2020-11-24",
-          "passportDateOfIssue": "2020-10-01",
-          "passportCountryOfIssue": "Brazil",
-          "passportCityOfIssue": "cwb"
+          "lastName": "Doe",
+          "checkIn": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "number": "BER3270",
+      "passengers": [
+        {
+          "id": 1,
+          "lastName": "Doe",
+          "checkIn": false
         }
       ]
     }
