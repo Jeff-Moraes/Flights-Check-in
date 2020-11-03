@@ -12,11 +12,13 @@
   <a href="#how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;
 </p>
 
-![App Screenshot](https://res.cloudinary.com/jeffmoraes/image/upload/c_scale,h_478/v1604444692/portfolio/Captura_de_Tela_2020-11-04_a%CC%80s_00.04.26_voqmwl.png)
+<p align="center">
+    ![App Screenshot](https://res.cloudinary.com/jeffmoraes/image/upload/c_scale,h_478/v1604444692/portfolio/Captura_de_Tela_2020-11-04_a%CC%80s_00.04.26_voqmwl.png)
+</p>
 
 <p align="center">
   <a href="https://flights-check-in.vercel.app/" target="_blank">
-    <img alt="Demo on Netlify" src="https://res.cloudinary.com/jeffmoraes/image/upload/v1603399947/portfolio/Captura_de_Tela_2020-10-22_a%CC%80s_22.52.10_px7ami.png">
+    <img alt="Demo on Netlify" src="https://res.cloudinary.com/jeffmoraes/image/upload/c_scale,w_236/v1603399947/portfolio/Captura_de_Tela_2020-10-22_a%CC%80s_22.52.10_px7ami.png">
   </a>
 </p>
 
@@ -37,16 +39,18 @@ This project was developed with the following technologies:
 
 To try it at the deployed version [here](https://flights-check-in.vercel.app/) you need to run the fake server on your terminal.
 You can do the check-in with the example flight and passenger info:
-
+</br>
 flight number = BER3270 </br>
 passenger last name = Doe
-
+</br>
 ```bash
 # to try it at the vercel deployed link you have to go into the repository folder and run the fake json server on your terminal
 $ npx json-server server.json -p 3333 -w
 ```
-
+</br>
+</br>
 To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer. From your command line:
+</br>
 
 ```bash
 # Clone this repository
