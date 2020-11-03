@@ -12,9 +12,8 @@
   <a href="#how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;
 </p>
 
-<p align="center">
-    ![App Screenshot](https://res.cloudinary.com/jeffmoraes/image/upload/c_scale,h_478/v1604444692/portfolio/Captura_de_Tela_2020-11-04_a%CC%80s_00.04.26_voqmwl.png)
-</p>
+
+![App Screenshot](https://res.cloudinary.com/jeffmoraes/image/upload/c_scale,h_478/v1604444692/portfolio/Captura_de_Tela_2020-11-04_a%CC%80s_00.04.26_voqmwl.png)
 
 <p align="center">
   <a href="https://flights-check-in.vercel.app/" target="_blank">
@@ -47,7 +46,6 @@ passenger last name = Doe
 # to try it at the vercel deployed link you have to go into the repository folder and run the fake json server on your terminal
 $ npx json-server server.json -p 3333 -w
 ```
-</br>
 </br>
 To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer. From your command line:
 </br>
